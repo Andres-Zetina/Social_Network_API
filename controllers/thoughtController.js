@@ -102,7 +102,7 @@ module.exports={
 //Post to create a reaction stored in a single thoughts reaction array
     createReaction(req, res) {
         const {body, params}= req;
-        thought.findOneAndUpdate(
+        Thought.findOneAndUpdate(
             {_id: params.thoughtId},
             {$push: {reaction: body}},
             {new: true, runValidators: true}
