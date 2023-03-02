@@ -2,7 +2,7 @@ const {User, Thought, Reaction } = require('../models');
 
 //Get all Users 
 module.exports ={
-    getUsers(req, res) {
+    getAllUsers(req, res) {
     User.find({})
         .then(users => {
             res.status(200).json(users);
@@ -13,9 +13,9 @@ module.exports ={
     },
 //get a single user
     getUserById(req,res) {
-        const {id} = req.params;
+        const {userId} = req.params;
 
-        User.findById(id)
+        User.findById(userId)
         .populate('thoughts friends')
         .then(user => {
             if(!user) {
@@ -46,10 +46,10 @@ module.exports ={
 
     //PUT to update a user by its _id
     updateUserById(req, res) {
-        const {id} = req.params;
+        const {userId} = req.params;
         const updateFields = req.body;
 
-        User.findByIdAndUpdate( id, updateFields, { new: true})
+        User.findByIdAndUpdate( userId, updateFields, { new: true})
             .then(user => {
                 if(!user) {
                     res.status(404).json({error:'User not found'});
@@ -64,9 +64,9 @@ module.exports ={
 
 //Delete a user by its _id
     deleteUserById(req,res){
-        const {id} = req.params;
+        const {userId} = req.params;
         
-        User.findByIdAndRemove(id)
+        User.findByIdAndRemove(userId)
             .then(user => {
                 if (!user){
                     res.status(404).json({error: 'User not found'});
