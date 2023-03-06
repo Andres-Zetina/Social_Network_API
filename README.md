@@ -31,7 +31,7 @@ The backend for a simple social media app.
   ```
   
   ## License this porject is license under the [MIT](https://opensource.org/licenses/MIT) license.
-  
+  ```
   ## Contact
   
   - GitHub: [Andres-Zetina](https://github.com/Andres-Zetina/Social_Network_API)
